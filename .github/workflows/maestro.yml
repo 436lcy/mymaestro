@@ -27,7 +27,13 @@ jobs:
             -sdk iphonesimulator \
             -configuration Debug \
             -derivedDataPath build \
+            IPHONEOS_DEPLOYMENT_TARGET=16.2 \
             clean build
+            
+      - name: Verify Deployment Target
+        run: |
+          plutil -p build/Build/Products/Debug-iphonesimulator/App.app/Info.plist | grep MinimumOSVersion
+          echo "Deployment target should be 16.2"
           
       - name: Install Maestro CLI
         run: |
