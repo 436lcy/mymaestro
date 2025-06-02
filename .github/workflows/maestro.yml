@@ -29,8 +29,13 @@ jobs:
             -derivedDataPath build \
             clean build
           
-      - name: Install Maestro
-        run: npm install -g @mobile-dev/maestro-cli
+      - name: Install Maestro CLI
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
+          
+      - name: Verify Maestro installation
+        run: maestro --version
         
       - name: Run Maestro Cloud Tests
         env:
