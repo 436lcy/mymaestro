@@ -1,0 +1,8 @@
+appID: com.lcy.App
+
+---
+- launchApp
+- tapOn: "Get Started"
+- assertVisible: "Welcome Screen"
+- tapOn: "Continue"
+- assertVisible: "Home Screen"
